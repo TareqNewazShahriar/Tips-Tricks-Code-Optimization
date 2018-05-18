@@ -1,4 +1,4 @@
-# Tips - Tricks - Optimization
+# Tips . Tricks . Optimization
 
 ---
 NOTE:
