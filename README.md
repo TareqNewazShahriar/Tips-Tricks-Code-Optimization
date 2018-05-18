@@ -1,37 +1,41 @@
-## Welcome to GitHub Pages
+# Tips, Tricks, Optimization
 
-You can use the [editor on GitHub](https://github.com/TareqNewazShahriar/Tips-Tricks-Optimization-of-Code/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+---
+- New one will be added at top, not at bottom with descending numbering. 
+- If a new code is needed to be added at the middle, number it as ‘10.1’ or ‘10.a’ etc. Do not change any existing number.
+---
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/TareqNewazShahriar/Tips-Tricks-Optimization-of-Code/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## [1]
+Optimization by compiler
+Ref: https://stackoverflow.com/questions/1749966/c-sharp-how-to-determine-whether-a-type-is-a-number
+````c#
+public static bool IsNumericType(Type type)
+{
+  switch (Type.GetTypeCode(type))
+  {
+	case TypeCode.Byte:
+	case TypeCode.SByte:
+	case TypeCode.UInt16:
+	case TypeCode.UInt32:
+	case TypeCode.UInt64:
+	case TypeCode.Int16:
+	case TypeCode.Int32:
+	case TypeCode.Int64:
+	case TypeCode.Decimal:
+	case TypeCode.Double:
+	case TypeCode.Single:
+  	return true;
+	default:
+  		return false;
+  }
+}
+````
+Compiler will optimize and generate below IL. Moreover the above code is more readable, leave rest to the IL.
+````c#
+public static bool IsNumericType(Type type)
+{
+  TypeCode typeCode = Type.GetTypeCode(type);
+  //The TypeCode of numerical types are between SByte (5) and Decimal (15).
+  return (int)typeCode >= 5 && (int)typeCode <= 15;
+}
+````
