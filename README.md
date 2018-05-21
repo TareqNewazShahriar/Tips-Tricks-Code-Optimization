@@ -2,7 +2,7 @@
 
 ---
 NOTE:
-- New one will be added at top, not at bottom with descending numbering. 
+- New items will be added at the top with descending numbering. 
 - If a new code is needed to be added at the middle, number it as ‘10.1’ or ‘10.a’ etc. Do not change any existing number.
 ---
 
