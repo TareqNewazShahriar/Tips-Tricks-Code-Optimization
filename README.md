@@ -7,7 +7,7 @@ NOTE:
 ---
 
 ## [1]
-Optimization by compiler
+Optimization by compiler <br/>
 Ref: https://stackoverflow.com/questions/1749966/c-sharp-how-to-determine-whether-a-type-is-a-number
 ````c#
 public static bool IsNumericType(Type type)
